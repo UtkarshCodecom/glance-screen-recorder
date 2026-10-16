@@ -201,7 +201,8 @@ RecordingFinalizer: video passthrough + AVAssetReaderAudioMixOutput (per-source 
   contained only zeros while a video was playing. Microphone, webcam and screen were captured correctly. Glance logs
   per-source audio diagnostics when a recording stops, which you can view with:
   `log show --last 10m --info --predicate 'subsystem == "dev.utkarsh.Glance"'`.
-  If you can reproduce this or know the cause, please comment on the issue. A fix is the top priority.
+  If you can reproduce this or know the cause, please comment on
+  [issue #1](https://github.com/UtkarshCodecom/glance-screen-recorder/issues/1). A fix is the top priority.
 - Ad-hoc builds lose permissions after rebuilding (see [Signing](#signing-and-macos-permissions)).
 
 ## FAQ
