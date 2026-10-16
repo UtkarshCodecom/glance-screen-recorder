@@ -1,0 +1,37 @@
+name: Bug report
+description: Something doesn't record, sound or look right
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Source: Full Screen / Window
+        2. Camera on/off, Microphone on/off, System audio on/off
+        3. Press Start Recording…
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version and Mac model
+      placeholder: macOS 26.6, MacBook Air M3
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Glance log
+      description: "Run right after the problem: log show --last 10m --info --predicate 'subsystem == \"dev.utkarsh.Glance\"'"
+      render: text
+  - type: textarea
+    id: verify
+    attributes:
+      label: Output of scripts/verify-recording.swift (if a file was saved)
+      render: text
