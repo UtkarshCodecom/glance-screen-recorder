@@ -108,9 +108,11 @@ final class PipelineIntegrationTests: XCTestCase {
         let bubbleRect = layout.rect(in: size)
         let cameraPixel = try XCTUnwrap(Self.pixel(of: image, at: CGPoint(x: bubbleRect.midX, y: bubbleRect.midY)))
         let screenPixel = try XCTUnwrap(Self.pixel(of: image, at: CGPoint(x: 40, y: 40)))
-        XCTAssertGreaterThan(cameraPixel.g, 150, "camera bubble should be composited")
-        XCTAssertLessThan(cameraPixel.r, 90)
-        XCTAssertGreaterThan(screenPixel.b, 150, "screen should fill the background")
+        // Compare channels relative to each other: exact values vary between hardware and software encoders.
+        XCTAssertGreaterThan(cameraPixel.g, cameraPixel.r + 60, "camera bubble (green) should be composited")
+        XCTAssertGreaterThan(cameraPixel.g, cameraPixel.b + 60, "camera bubble (green) should be composited")
+        XCTAssertGreaterThan(screenPixel.b, screenPixel.r + 60, "screen (blue) should fill the background")
+        XCTAssertGreaterThan(screenPixel.b, screenPixel.g + 60, "screen (blue) should fill the background")
     }
 
     func testSeparateTracksAreKeptDisabled() async throws {
